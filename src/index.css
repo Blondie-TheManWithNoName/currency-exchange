@@ -1,0 +1,28 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #003b82;
+}
+
+/* DELETE INPUT ARROWS */
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.space-grotesk {
+  font-family: "Space Grotesk", sans-serif;
+}
+
+body {
+  font-family: "Twemoji Country Flags", Arial, sans-serif;
+}
