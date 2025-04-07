@@ -1,7 +1,6 @@
 import { getEmojiByCurrencyCode } from "country-currency-emoji-flags";
 
 export default function ComboBox({ id, currency }: { id: number; currency?: string[] }) {
-  console.log(currency);
   return (
     <div className="flex flex-col items-center">
       <label htmlFor={`currency-${id}`} className="text-black text-xl w-full text-left">

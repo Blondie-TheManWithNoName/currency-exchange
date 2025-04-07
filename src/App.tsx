@@ -6,7 +6,7 @@ import { useState } from "react";
 
 function App() {
   const [convertData, setConvertData] = useState<{ currency: string; rate: number }[]>([]);
-  const currency = useCurrency();
+  const { data: currency, error: currencyError } = useCurrency();
   const [error, setError] = useState(false);
 
   function submit(e: React.FormEvent<HTMLFormElement>) {
@@ -33,24 +33,31 @@ function App() {
     <>
       <Header />
 
-      <main className="flex flex-col items-center justify-center w-full h-[60vh]">
-        <form className="flex flex-row gap-6 w-full justify-center items-end px-20" onSubmit={submit}>
+      <main className="flex flex-col items-center justify-center w-full mt-[10rem]">
+        <form className="flex flex-col md:flex-row gap-6 w-full justify-center items-end px-20" onSubmit={submit}>
           {" "}
           <InputText error={error} />
           {currency && Array.from({ length: 3 }).map((_, index) => <ComboBox key={index} id={index + 1} currency={Object.keys(currency)} />)}
-          <input type="submit" className="min-w-24 text-white py-2 px-4 text-xl cursor-pointer max-h-11 bg-primary hover:bg-primary/50" value="Convert" />
+          {currencyError && <div className="text-red-500 text-md ">Error fetching the data, please try again later</div>}
+          <input
+            type="submit"
+            className="min-w-24 text-white py-2 px-4 text-xl cursor-pointer max-h-11 bg-primary hover:bg-primary/50 disabled:bg-gray-400 disabled:cursor-not-allowed
+"
+            disabled={currencyError}
+            value="Convert"
+          />
         </form>
-        <div className="flex flex-row w-full items-center justify-center mt-[20vh] bg-primary/90 py-4 text-white">
+        <div className="flex flex-row w-full items-center justify-center mt-[10rem] bg-primary/90 py-4 text-white no-wrap">
           {convertData.map((item, index) =>
             index === 0 ? (
-              <div className="text-6xl font-semibold">
+              <div className="text-4xl md:text-6xl font-semibold">
                 <span className="text-[#FFC635]">
                   {convertData[0].rate} {convertData[0].currency}
                 </span>{" "}
                 =
               </div>
             ) : (
-              <div key={index} className="p-2 text-4xl ">
+              <div key={index} className="p-2 text-2xl md:text-4xl no-wrap">
                 {(Number(convertData[0].rate) * Number(item.rate)).toFixed(2)} {item.currency} {index === convertData.length - 1 ? "" : "="}
               </div>
             )
