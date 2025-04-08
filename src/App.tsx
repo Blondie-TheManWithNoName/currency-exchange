@@ -33,8 +33,8 @@ function App() {
     <>
       <Header />
 
-      <main className="flex flex-col items-center justify-center w-full mt-[10rem]">
-        <form className="flex flex-col md:flex-row gap-6 w-full justify-center items-end px-20" onSubmit={submit}>
+      <main className="flex flex-col items-center justify-center w-full mt-[4rem] md:mt-[10rem]">
+        <form className="flex flex-col md:flex-row gap-x-6 gap-y-3 w-full justify-center items-end px-20" onSubmit={submit}>
           {" "}
           <InputText error={error} />
           {currency && Array.from({ length: 3 }).map((_, index) => <ComboBox key={index} id={index + 1} currency={Object.keys(currency)} />)}
@@ -47,7 +47,7 @@ function App() {
             value="Convert"
           />
         </form>
-        <div className="flex flex-row w-full items-center justify-center mt-[10rem] bg-primary/90 py-4 text-white no-wrap">
+        <div className="flex flex-row w-full items-center justify-center mt-[4rem] md:mt-[10rem] bg-primary/90 py-4 text-white no-wrap">
           {convertData.map((item, index) =>
             index === 0 ? (
               <div className="text-4xl md:text-6xl font-semibold">
