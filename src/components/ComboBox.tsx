@@ -2,8 +2,8 @@ import { getEmojiByCurrencyCode } from "country-currency-emoji-flags";
 
 export default function ComboBox({ id, currency }: { id: number; currency?: string[] }) {
   return (
-    <div className="flex flex-col items-center">
-      <label htmlFor={`currency-${id}`} className="text-black text-xl w-full text-left">
+    <div className="flex flex-row md:flex-col items-center">
+      <label htmlFor={`currency-${id}`} className="text-black text-xl w-full text-right md:text-left">
         To
       </label>
       <select name={`currency-${id}`} id={`currency-${id}`} className="min-w-28 text-black py-2 px-2 max-h-12 border-primary border-1 text-xl" defaultValue="USD">
